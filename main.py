@@ -24,6 +24,7 @@ from opencc import OpenCC
 import streamlit as st
 from IPython.display import HTML
 
+
 st.set_page_config(layout="wide")
 st.title('Name Checking Automator')
 names = st.text_input('Please input the name')

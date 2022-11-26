@@ -1,0 +1,8 @@
+webdriver_manager
+nltk
+selenium
+pandas
+beautifulsoup4
+requests
+opencc
+streamlit
