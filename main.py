@@ -1,28 +1,27 @@
-import re
+# import re
 import nltk
 nltk.download('punkt')
 from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import sent_tokenize, word_tokenize
-from pprint import pprint
+# from nltk.tokenize import sent_tokenize, word_tokenize
+# from pprint import pprint
 from nltk.corpus import wordnet
-from nltk.corpus import stopwords
+# from nltk.corpus import stopwords
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
-from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
 import time
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests as r
 from opencc import OpenCC
 import streamlit as st
-from IPython.display import HTML
 
 
 st.set_page_config(layout="wide")
@@ -83,6 +82,7 @@ def fetch_content(link):
             })
             res = r.get(link, headers=headers, timeout=5)
             html_page = res.content
+            # soup = BeautifulSoup(open(html_page, 'r'), "html.parser", from_encoding="iso-8859-1")
             soup = BeautifulSoup(html_page, 'html.parser')
             text_obj = soup.find_all(text=True)
 
@@ -233,7 +233,7 @@ st.dataframe(df_new)
 
 @st.cache
 def convert_df(df):
-    return df.to_csv(index = False, encoding = "utf-8")
+    return df.to_csv().encode("utf_8_sig")
 csv = convert_df(df_new)
 st.download_button(label = "Press to Download",
                    data = csv,
